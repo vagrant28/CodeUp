@@ -39,18 +39,15 @@ void KMP(){
 		while(j != -1 && text[i] != pattern[j + 1]){
 			j = next[j];
 		}
-		if(text[i] == text[j + 1]){
+		if(text[i] == pattern[j + 1]){
 			j++;
 		}
 		if(j == m - 1){
 			if(((i - m + 1 == 0) || (text[i - m] == ' ')) && ((i == n - 1) || text[i + 1] == ' ')){
-				if((i- m + 1 == 0) || text[i - m] == ' '){
-//					printf("i=%d\n", i);
-					ans++;
-					if(flag == false){
-						s = i - m + 1;
-						flag = true;
-					}
+				ans++;
+				if(flag == false){
+					s = i - m + 1;
+					flag = true;
 				}
 			}
 			j = next[j];
@@ -70,6 +67,8 @@ int main(){
 		scanf("%[^\n]", text);
 		standard(pattern);
 		standard(text);
+//		puts(pattern);
+//		puts(text);
 		KMP();
 	}
 	return 0;
